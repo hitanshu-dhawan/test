@@ -7,6 +7,10 @@ jobs:
   display-variables:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - run: python main.py
     - name: Display variables
       run: |-
         echo "CI: $CI"
