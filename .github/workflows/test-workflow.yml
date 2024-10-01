@@ -10,7 +10,7 @@ jobs:
     - uses: actions/setup-python@v2
       with:
         python-version: '3.x'
-    - run: python main.py
+    - run: python src/main.py
     - name: Display variables
       run: |-
         echo "CI: $CI"
