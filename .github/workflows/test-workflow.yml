@@ -5,14 +5,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  display-variables:
+  test-job:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
       with:
         python-version: '3.x'
-    - run: src/python main.py
+    - run: python src/main.py
     - name: create pull request
       run: gh pr create --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
       env:
