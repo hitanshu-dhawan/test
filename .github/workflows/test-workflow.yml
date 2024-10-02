@@ -1,11 +1,8 @@
 name: Test Workflow
 
 on:
+  push:
   workflow_dispatch:
-
-defaults:
-  run:
-    working-directory: src
 
 jobs:
   display-variables:
@@ -15,7 +12,8 @@ jobs:
     - uses: actions/setup-python@v2
       with:
         python-version: '3.x'
-    - run: python main.py
-    - name: Display variables
-      run: |-
-        echo "CI: $CI"
+    - run: src/python main.py
+    - name: create pull request
+      run: gh pr create --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
